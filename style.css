@@ -553,3 +553,211 @@ body {
     text-align: center;
   }
 }
+
+/* ===== ГЕО-ОВЕРЛЕЙ ===== */
+.geo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(26, 26, 26, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.geo-overlay.hidden {
+  display: none;
+}
+
+/* Размытие основного контента пока оверлей активен */
+#dossier-wrapper {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.5s ease;
+}
+
+#dossier-wrapper.unlocked {
+  filter: none;
+  pointer-events: auto;
+  user-select: auto;
+}
+
+/* Карточка авторизации */
+.geo-card {
+  width: 100%;
+  max-width: 440px;
+  background: #faf8f2;
+  border: 2px solid #1a3a6a;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.4),
+    4px 4px 0 #c8c0b0;
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Водяной знак карточки */
+.geo-card::before {
+  content: "СЕКРЕТНО";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-35deg);
+  font-size: 60px;
+  font-weight: 900;
+  color: rgba(180, 0, 0, 0.06);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 6px;
+}
+
+.geo-card-header {
+  background: #1a3a6a;
+  color: #faf8f2;
+  text-align: center;
+  padding: 20px 24px 16px;
+  border-bottom: 3px double #c8c0b0;
+}
+
+.geo-stamp {
+  display: inline-block;
+  color: #ffcccc;
+  border: 1px solid #ffcccc;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  transform: rotate(-2deg);
+  opacity: 0.85;
+}
+
+.geo-lock {
+  font-size: 40px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.geo-title {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: #faf8f2;
+  text-transform: uppercase;
+}
+
+.geo-subtitle {
+  font-size: 10px;
+  color: rgba(250, 248, 242, 0.6);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.geo-card-body {
+  padding: 20px 24px;
+}
+
+.geo-divider {
+  height: 1px;
+  background: #c8c0b0;
+  margin: 12px 0;
+}
+
+.geo-message {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+}
+
+.geo-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.geo-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #cc2200;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.geo-status-dot.blink {
+  animation: geo-blink 1.2s step-start infinite;
+}
+
+.geo-status-dot.ok {
+  background: #1a7a1a;
+  animation: none;
+}
+
+@keyframes geo-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.1; }
+}
+
+#geo-status-text {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.geo-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background: #1a3a6a;
+  border: 1px solid #112a5a;
+  color: #faf8f2;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 6px;
+}
+
+.geo-btn:hover {
+  background: #112a5a;
+}
+
+.geo-btn:disabled {
+  background: #888;
+  border-color: #666;
+  cursor: not-allowed;
+}
+
+.geo-error {
+  font-size: 11px;
+  color: #aa0000;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 10px;
+  min-height: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.geo-card-footer {
+  background: #f5f2ea;
+  border-top: 1px solid #c8c0b0;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+}
